@@ -1,0 +1,3 @@
+Issues:
+1. Library incompatablility
+Numba requires numpy version <=2.00, while the pandas has incompatability problem with older version numpy
