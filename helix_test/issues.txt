@@ -1,3 +1,20 @@
 Issues:
 1. Library incompatablility
-Numba requires numpy version <=2.00, while the pandas has incompatability problem with older version numpy
+Numba requires numpy version <=2.00, while the pandas has incompatability problem with older version numpy.
+
+2. To further inspect and find the right versions for the libraries,
+Git cloned another copy of helix, installed from that one.
+
+3. A copy of helix has been attached under DELight_mtr directory for testing
+
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+pdmongo 0.3.4 requires pandas<1.6,>=0.20, but you have pandas 2.2.3 which is incompatible.
+numba 0.60.0 requires numpy<2.1,>=1.22, but you have numpy 2.2.1 which is incompatible.
+strax 2.0.3 requires numpy<2.0.0,>=1.18.5, but you have numpy 2.2.1 which is incompatible.
+
+pip install -r requirements.txt
+
+python also need to be >3.7 <3.11
+Do we have a docker for that?
+
+The test of helix has some array method incompatability problems on my laptop.
