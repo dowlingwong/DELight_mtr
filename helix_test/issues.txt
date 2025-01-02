@@ -18,3 +18,5 @@ python also need to be >3.7 <3.11
 Do we have a docker for that?
 
 The test of helix has some array method incompatability problems on my laptop.
+
+Helix syntax used some old features, not supported.
