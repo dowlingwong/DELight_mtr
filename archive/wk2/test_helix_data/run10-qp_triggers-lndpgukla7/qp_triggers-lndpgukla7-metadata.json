@@ -1,0 +1,50 @@
+{
+    "chunk_target_size_mb": 200,
+    "chunks": [
+        {
+            "chunk_i": 0,
+            "end": 1737108284000000000,
+            "filename": "qp_triggers-lndpgukla7-000000",
+            "filesize": 33552,
+            "first_endtime": 1737108254190334688,
+            "first_time": 1737108254183194688,
+            "last_endtime": 1737108283466078688,
+            "last_time": 1737108283460210688,
+            "n": 1308,
+            "nbytes": 51012,
+            "run_id": "run10",
+            "start": 1737108254000000000,
+            "subruns": null
+        }
+    ],
+    "compressor": "blosc",
+    "data_kind": "qp_triggers",
+    "data_type": "qp_triggers",
+    "dtype": "[(('Start time since unix epoch [ns]', 'time'), '<i8'), (('Length of the interval in samples', 'length'), '<i8'), (('Width of one sample [ns]', 'dt'), '<i2'), (('Channel number', 'channel'), '<i2'), (('Channel type', 'channel_type'), '<i2'), (('Id of the block of records in the run', 'block_id'), '<i4'), (('Sample index in the record where the filtered record crossed the threshold', 'start_loc'), '<i4'), (('Sample index in the record where the filtered record reached the maximum', 'loc'), '<i4'), (('Max amplitude of the filtered record withing the trigger', 'amplitude'), '<f4'), (('Whether or not the deactivation threshold was crossed', 'deactivation_crossed'), '|u1')]",
+    "end": 1737108284000000000,
+    "lineage": {
+        "qp_triggers": [
+            "QPTriggers",
+            "0.0.0",
+            {
+                "Triggers": "0.0.0",
+                "deactivation_threshold_coefficient": 1.0,
+                "filter_kernel": null,
+                "qp_gdf_kernel_sigma": 500,
+                "trigger_holdoff": 0,
+                "trigger_threshold": 100.0
+            }
+        ],
+        "raw_records": [
+            "ToyDataRawRecords",
+            "0.0.0",
+            {}
+        ]
+    },
+    "lineage_hash": "lndpgukla7",
+    "run_id": "run10",
+    "start": 1737108254000000000,
+    "strax_version": "2.0.4",
+    "writing_ended": 1737108284.707653,
+    "writing_started": 1737108255.5137112
+}

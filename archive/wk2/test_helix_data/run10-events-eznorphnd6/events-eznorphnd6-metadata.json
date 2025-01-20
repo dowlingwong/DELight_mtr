@@ -1,0 +1,204 @@
+{
+    "chunk_target_size_mb": 200,
+    "chunks": [
+        {
+            "chunk_i": 0,
+            "end": 1737108257033743500,
+            "filename": "events-eznorphnd6-000000",
+            "filesize": 61629029,
+            "first_endtime": 1737108254250224000,
+            "first_time": 1737108254183088000,
+            "last_endtime": 1737108256696956000,
+            "last_time": 1737108256629820000,
+            "n": 29,
+            "nbytes": 218070720,
+            "run_id": "run10",
+            "start": 1737108254000000000,
+            "subruns": null
+        },
+        {
+            "chunk_i": 1,
+            "end": 1737108261248215500,
+            "filename": "events-eznorphnd6-000001",
+            "filesize": 57324633,
+            "first_endtime": 1737108257100880000,
+            "first_time": 1737108257033744000,
+            "last_endtime": 1737108261167988000,
+            "last_time": 1737108261100852000,
+            "n": 27,
+            "nbytes": 203031360,
+            "run_id": "run10",
+            "start": 1737108257033743500,
+            "subruns": null
+        },
+        {
+            "chunk_i": 2,
+            "end": 1737108265887891500,
+            "filename": "events-eznorphnd6-000002",
+            "filesize": 53899683,
+            "first_endtime": 1737108261315352000,
+            "first_time": 1737108261248216000,
+            "last_endtime": 1737108264743488000,
+            "last_time": 1737108264676352000,
+            "n": 26,
+            "nbytes": 195511680,
+            "run_id": "run10",
+            "start": 1737108261248215500,
+            "subruns": null
+        },
+        {
+            "chunk_i": 3,
+            "end": 1737108268508983500,
+            "filename": "events-eznorphnd6-000003",
+            "filesize": 57730774,
+            "first_endtime": 1737108265955028000,
+            "first_time": 1737108265887892000,
+            "last_endtime": 1737108268491504000,
+            "last_time": 1737108268424368000,
+            "n": 27,
+            "nbytes": 203031360,
+            "run_id": "run10",
+            "start": 1737108265887891500,
+            "subruns": null
+        },
+        {
+            "chunk_i": 4,
+            "end": 1737108272372275500,
+            "filename": "events-eznorphnd6-000004",
+            "filesize": 53499529,
+            "first_endtime": 1737108268576120000,
+            "first_time": 1737108268508984000,
+            "last_endtime": 1737108272153964000,
+            "last_time": 1737108272086828000,
+            "n": 25,
+            "nbytes": 187992000,
+            "run_id": "run10",
+            "start": 1737108268508983500,
+            "subruns": null
+        },
+        {
+            "chunk_i": 5,
+            "end": 1737108277286543500,
+            "filename": "events-eznorphnd6-000005",
+            "filesize": 55580119,
+            "first_endtime": 1737108272439412000,
+            "first_time": 1737108272372276000,
+            "last_endtime": 1737108277264200000,
+            "last_time": 1737108277197064000,
+            "n": 26,
+            "nbytes": 195511680,
+            "run_id": "run10",
+            "start": 1737108272372275500,
+            "subruns": null
+        },
+        {
+            "chunk_i": 6,
+            "end": 1737108280291395500,
+            "filename": "events-eznorphnd6-000006",
+            "filesize": 51602035,
+            "first_endtime": 1737108277353680000,
+            "first_time": 1737108277286544000,
+            "last_endtime": 1737108280191452000,
+            "last_time": 1737108280124316000,
+            "n": 25,
+            "nbytes": 187992000,
+            "run_id": "run10",
+            "start": 1737108277286543500,
+            "subruns": null
+        },
+        {
+            "chunk_i": 7,
+            "end": 1737108282669183500,
+            "filename": "events-eznorphnd6-000007",
+            "filesize": 55762868,
+            "first_endtime": 1737108280358532000,
+            "first_time": 1737108280291396000,
+            "last_endtime": 1737108282463772000,
+            "last_time": 1737108282396636000,
+            "n": 26,
+            "nbytes": 195511680,
+            "run_id": "run10",
+            "start": 1737108280291395500,
+            "subruns": null
+        },
+        {
+            "chunk_i": 8,
+            "end": 1737108284000000000,
+            "filename": "events-eznorphnd6-000008",
+            "filesize": 21415200,
+            "first_endtime": 1737108282736320000,
+            "first_time": 1737108282669184000,
+            "last_endtime": 1737108283527372000,
+            "last_time": 1737108283460236000,
+            "n": 10,
+            "nbytes": 75196800,
+            "run_id": "run10",
+            "start": 1737108282669183500,
+            "subruns": null
+        }
+    ],
+    "compressor": "blosc",
+    "data_kind": "events",
+    "data_type": "events",
+    "dtype": "[(('Start time since unix epoch [ns]', 'time'), '<i8'), (('Length of the interval in samples', 'length'), '<i8'), (('Width of one sample [ns]', 'dt'), '<i2'), (('Id of the block of records in the run', 'block_id'), '<i4'), (('Start time of the block since unix epoch [ns]', 'block_time'), '<i8'), (('Event number in the record block', 'event_id'), '<i2'), (('Sample index in the record where the trace starts', 'start_loc'), '<i4'), (('Trace data in individual channels', 'channel_data'), '<f8', (50, 16784)), (('Channel numbers', 'channels'), '<i2', (50,)), (('Summed traces of summed_channel_types', 'data'), '<f8', (6, 16784)), (('Types of the summed traces', 'summed_channel_types'), '<i2', (6,)), (('Mask of channels that were summed up to produce the summed traces', 'summed_channel_masks'), '|u1', (6, 50))]",
+    "end": 1737108284000000000,
+    "lineage": {
+        "events": [
+            "Events",
+            "auto_ukj7yzzn5n",
+            {
+                "allowed_fit_shifts": [
+                    -200,
+                    200
+                ],
+                "channel_map": {
+                    "0": [
+                        1,
+                        35
+                    ],
+                    "1": [
+                        36,
+                        50
+                    ]
+                },
+                "template_length": 16384,
+                "template_prepulse_length": 2048
+            }
+        ],
+        "qp_triggers": [
+            "QPTriggers",
+            "0.0.0",
+            {
+                "Triggers": "0.0.0",
+                "deactivation_threshold_coefficient": 1.0,
+                "filter_kernel": null,
+                "qp_gdf_kernel_sigma": 500,
+                "trigger_holdoff": 0,
+                "trigger_threshold": 100.0
+            }
+        ],
+        "raw_records": [
+            "ToyDataRawRecords",
+            "0.0.0",
+            {}
+        ],
+        "uv_triggers": [
+            "UVTriggers",
+            "0.0.0",
+            {
+                "Triggers": "0.0.0",
+                "deactivation_threshold_coefficient": 1.0,
+                "filter_kernel": null,
+                "trigger_holdoff": 0,
+                "trigger_threshold": 100.0,
+                "uv_gdf_kernel_sigma": 50
+            }
+        ]
+    },
+    "lineage_hash": "eznorphnd6",
+    "run_id": "run10",
+    "start": 1737108254000000000,
+    "strax_version": "2.0.4",
+    "writing_ended": 1737108324.654784,
+    "writing_started": 1737108255.676668
+}
