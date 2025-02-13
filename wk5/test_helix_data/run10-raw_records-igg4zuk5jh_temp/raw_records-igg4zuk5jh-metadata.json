@@ -1,0 +1,19 @@
+{
+    "chunk_target_size_mb": 200,
+    "chunks": [],
+    "compressor": "lz4",
+    "data_kind": "raw_records",
+    "data_type": "raw_records",
+    "dtype": "[(('Start time since unix epoch [ns]', 'time'), '<i8'), (('Length of the interval in samples', 'length'), '<i8'), (('Width of one sample [ns]', 'dt'), '<i2'), (('Channel number', 'channel'), '<i2'), (('Channel type', 'channel_type'), '<i2'), (('Id of the block of records in the run', 'block_id'), '<i4'), (('Record data in raw ADC counts', 'data'), '<i2', (1250000,))]",
+    "lineage": {
+        "raw_records": [
+            "MMCRecords",
+            "0.0.0",
+            {}
+        ]
+    },
+    "lineage_hash": "igg4zuk5jh",
+    "run_id": "run10",
+    "strax_version": "2.0.4",
+    "writing_started": 1739442619.106675
+}
