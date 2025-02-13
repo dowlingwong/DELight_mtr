@@ -1,0 +1,137 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "005b8bbe-b06d-4c3a-ba09-65f17535e3fb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "53992859-66a1-43ae-b6c7-37757adf120d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "file_path = 'traces.csv'\n",
+    "\n",
+    "traces_df = pd.read_csv(file_path, header=None)\n",
+    "traces = traces_df.to_numpy(dtype=np.float32)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 24,
+   "id": "2cab565b-b561-4e94-9312-5fa0a4b5b3f3",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "means_per_trace = np.mean(traces[:, :2048], axis=1)  # Shape (100,)\n",
+    "final_average = np.mean(means_per_trace)   "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "07deb0ac-0124-4f44-a162-34a249c8b484",
+   "metadata": {},
+   "source": [
+    "array([  129.06494 ,   130.66699 ,   132.2251  ,   128.4497  ,\n",
+    "         128.1211  ,   129.51367 ,   128.05957 ,   128.4624  ,\n",
+    "         129.99756 ,   131.06348 ,   130.65527 ,   129.34082 ,\n",
+    "         133.0249  ,   130.82617 ,   136.33301 ,   129.98926 ,\n",
+    "         131.8247  ,   135.05908 ,   132.89893 ,   133.24512 ,\n",
+    "         131.6914  ,   132.46973 ,   132.71729 ,   128.8081  ,\n",
+    "         132.021   ,   132.13281 ,   127.998535,   132.79541 ,\n",
+    "         127.52637 ,   127.94092 ,   128.34473 ,   128.17041 ,\n",
+    "         127.697266,   130.36523 ,   132.63623 ,   128.90088 ,\n",
+    "         129.69385 ,   133.15234 ,   132.50879 ,   131.77881 ,\n",
+    "         128.04004 ,   129.90771 ,   129.07129 ,   133.75195 ,\n",
+    "         131.71582 ,   129.2461  ,   128.14941 ,   129.08691 ,\n",
+    "         128.56201 ,   126.53174 ,   127.22705 ,   127.78662 ,\n",
+    "         128.04834 ,   129.82129 ,   132.19775 ,   130.54102 ,\n",
+    "         130.72656 ,   130.13623 ,   128.04102 ,   129.52197 ,\n",
+    "         127.07471 ,   127.62109 ,   131.73242 ,   130.33154 ,\n",
+    "         120.81738 ,   130.49414 ,   130.9541  ,   130.97119 ,\n",
+    "         128.60254 ,   128.93066 , 16702.691   ,   203.00488 ,\n",
+    "         130.60596 ,   127.31348 ,   128.70654 ,   131.53711 ,\n",
+    "         128.81934 ,   128.8374  ,   128.63623 ,   129.32031 ,\n",
+    "         129.89648 ,   129.40967 ,   127.012695,   126.30322 ,\n",
+    "         130.98877 ,   126.15576 ,   129.66162 ,   130.38965 ,\n",
+    "         129.7915  ,   129.12598 ,   128.68262 ,   130.14746 ,\n",
+    "         128.94482 ,   127.603516,   129.64453 ,   128.52051 ,\n",
+    "         125.450195,   129.73633 ,   129.97266 ,   131.21484 ],\n",
+    "      dtype=float32)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 31,
+   "id": "e6f717d2-037f-4120-8c6f-723fc732c035",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "means_per_trace = np.mean(traces[:, :2048], axis=1)  # Shape (100,)\n",
+    "mask = (means_per_trace >= 120) & (means_per_trace <= 140)\n",
+    "masked_average = np.where(mask, means_per_trace, np.nan)\n",
+    "\n",
+    "clean_average = np.nanmean(masked_average)\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 32,
+   "id": "d7eeb1d0-a185-41fd-9d5f-92496ddd2215",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "129.75757"
+      ]
+     },
+     "execution_count": 32,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "clean_average"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9489b9ca-ebe4-47c4-ae0b-58c677833c61",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
