@@ -1,0 +1,6 @@
+psd_path: 'data/noise_psd.npy'
+template_path: 'data/template.npy'
+sampling_frequency: 1
+with_shift: True
+allowed_shift_range: [-100, 100]
+

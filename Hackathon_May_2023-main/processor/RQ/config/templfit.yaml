@@ -1,0 +1,2 @@
+template_path: 'data/template.npy'
+start_values: [1.0, 0.0]
