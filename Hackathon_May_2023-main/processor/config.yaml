@@ -1,0 +1,35 @@
+stddev:
+   function: StandardDeviation
+   config: stddev.config
+mean:
+   function: Mean
+   config: mean.config
+mean_baseline:
+   function: MeanBaseline
+   config: ./RQ/config/mean_baseline_config.yaml
+ampl:
+   function: Amplitude
+   config: ./RQ/config/amplitude.yaml
+risetime:
+   function: RiseTime
+   config: ./RQ/config/risetime.yaml
+templfit:
+   function: TemplateFitting
+   config: ./RQ/config/templfit.yaml
+baseline_slope:
+   function: BaselineSlope
+   config: ./RQ/config/baseline_slope.yaml
+x_shift:
+   function: TimeShift
+   config: ./RQ/config/timeshift.yaml
+
+optimum_filter:
+   function: OFFitting
+   config: ./RQ/config/of_config.yaml
+
+channel_weights:
+   path: ./channel_weights.dat
+trigger_information:
+   pre-trigger_samples: 4000
+   time_per_sample: 2.5599999275982555e-07
+

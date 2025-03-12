@@ -1,0 +1,10 @@
+mean:
+   function: Mean
+   config: mean.config
+
+stddev:
+   function: StandardDeviation
+   config: stddev.config
+
+channel_weights:
+   path: ./channel_weights.dat
