@@ -62,27 +62,6 @@ class OptimumFilter():
         chisq = (chisq0 - (amp0**2)*self._kernel_normalization)/(self._length-2)
         
         return amp0, chisq
-
-        def fit_with_no_shift(self, traces):# basically just fit() for multiple traces
-        self._check_traces_shape(traces)
-
-        trace_fft = scipy.fft.fft(traces, axis=-1) / self._sampling_frequency  # V
-        trace_filtered = self._kernel_fft * trace_fft / self._kernel_normalization[..., np.newaxis]  # Phi * V
-        chisq0 = np.real(
-            np.einsum('...j, ...j -> ...',
-                      trace_fft.conjugate() / self._noise_psd_unfolded,
-                      trace_fft) * self._sampling_frequency / self._length
-        )
-
-        amp0 = np.real(np.sum(
-            trace_filtered, axis=-1
-        )) * self._sampling_frequency / self._length
-
-        # total chisq
-        # self._length-2 is the number of degrees of freedom. Is this actually correct? Shouldn't it be L - 1?
-        chisq = (chisq0 - (amp0 ** 2) * self._kernel_normalization) / (self._length - 2)
-
-        return amp0, chisq
         
     def fit_with_shift(self, trace, allowed_shift_range=None):
  
