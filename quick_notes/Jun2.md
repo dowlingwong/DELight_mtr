@@ -35,7 +35,7 @@
 * Stat of noise fitting amplitudes
     Stat has been made with 1000 set of MMC noise traces with noise power of 33.2.Below is the histogram for ampl fitted for three type channels. Shows their distribution rough the same. Thus decide to use overall one threshold trigger.
     <img src="image.png" alt="distribution of ampl for 3 different channels" width="500"/>
-* Due to event-wise triggering, the effective rejection threshold is higher than the average noise amplitude
+* Due to event-wise triggering, the effective rejection threshold is higher than the average noise amplitude  
     <img src="image-2.png" alt="passrate plot" width="500"/>
 
 
