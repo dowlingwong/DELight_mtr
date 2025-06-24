@@ -1,0 +1,12 @@
+LCE: '/ceph/bmaier/delight/share/TraceSimulator/optical/optSim_LCE.npz'
+optArrivalTime: '/ceph/bmaier/delight/share/TraceSimulator/optical/optSim_arrivalTime.npz'
+PCE: '/ceph/bmaier/delight/new/v0_new_phonSim_PCE.npz'
+phonArrivalTime: '/ceph/bmaier/delight/new/v0_new_phonSim_phonTemplate.npz'
+TCE: '/ceph/bmaier/delight/share/TraceSimulator/triplet/trSim_TCE.npz'
+trArrivalTime: '/ceph/bmaier/delight/share/TraceSimulator/triplet/trSim_trTemplate.npz'
+positionMMC: '/ceph/bmaier/delight/share/TraceSimulator/position_MMC.dat'
+# from X-ray MMC analysis
+sampling_frequency: 3906250
+trace_samples: 32768
+noise_type: '/ceph/dwong/delight/templates/noise_psd_xray.npy'
+noise_power: 33.2
