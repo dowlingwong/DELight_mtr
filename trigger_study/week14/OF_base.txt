@@ -1,9 +1,7 @@
 #Optimum filter V1.1, adapt to the case where the trace length is longer than the template
 import numpy as np
 from numpy.fft import rfft, irfft, fft, ifft, fftfreq, rfftfreq
-from numpy.lib.stride_tricks import sliding_window_view
 from scipy.signal import fftconvolve
-
 
 class OptimumFilter():
     
@@ -34,33 +32,46 @@ class OptimumFilter():
                                                        self._noise_psd[1:]/2,
                                                        self._noise_psd[-1:0:-1]/2))
             
+        
         self._template_fft = fft(self._template)/self._sampling_frequency
         
         self._kernel_fft = self._template_fft.conjugate() / self._noise_psd_unfolded
         self._kernel_normalization = np.real(np.dot(self._kernel_fft, self._template_fft))*self._sampling_frequency/self._length 
-        self._filter_kernel = self._kernel_fft / self._kernel_normalization
-        self._kernel_td = np.real(ifft(self._filter_kernel)) * self._sampling_frequency
-        
         
     def fit(self, trace):
+
         trace_fft = fft(trace, axis=-1)/self._sampling_frequency # V
-        trace_filtered = self._filter_kernel * trace_fft
-        amp = np.real(trace_filtered.sum(axis=-1)) * self._sampling_frequency / self._length
-        chisq0 = np.real((trace_fft.conj() * trace_fft / self._noise_psd_unfolded).sum()) * self._sampling_frequency / self._length
-        chisq = (chisq0 - amp**2 * self._kernel_normalization) / (self._length - 2) 
+        trace_filtered = self._kernel_fft * trace_fft / self._kernel_normalization # Phi * V
+        chisq0 = np.real(
+            np.dot(trace_fft.conjugate()/self._noise_psd_unfolded,
+                   trace_fft)*self._sampling_frequency/self._length
+        )
         
-        return amp, chisq
+        amp0 = np.real(np.sum(
+            trace_filtered, axis=-1
+        ))*self._sampling_frequency/self._length
+
+
+        # total chisq
+        # self._length-2 is the assumed number of degrees of freedom
+        chisq = (chisq0 - (amp0**2)*self._kernel_normalization)/(self._length-2)
+        
+        return amp0, chisq
     
     def fit_with_shift(self, trace, allowed_shift_range=None):
  
         trace_fft = fft(trace, axis=-1)/self._sampling_frequency # V
-        trace_filtered = self._filter_kernel * trace_fft
+        trace_filtered = self._kernel_fft * trace_fft / self._kernel_normalization # Phi * V
         trace_filtered_td = np.real(
             ifft(trace_filtered, axis=-1)
         ) * self._sampling_frequency
 
-        chi0 = np.real((trace_fft.conj() * trace_fft / self._noise_psd_unfolded).sum()) * self._sampling_frequency / self._length
-        chit_withdelay = (trace_filtered_td ** 2) * self._kernel_normalization
+        chi0 = np.real(
+            np.dot(trace_fft.conjugate()/self._noise_psd_unfolded,
+                   trace_fft)*self._sampling_frequency/self._length
+        )
+
+        chit_withdelay = (trace_filtered_td**2) * self._kernel_normalization
         chi = chi0 - chit_withdelay
         
         if allowed_shift_range is None:
@@ -75,9 +86,9 @@ class OptimumFilter():
         chisq = chi[best_ind]/(self._length-3)
         t0 = best_ind if best_ind<self._length//2 else best_ind-self._length
         
-        return amp, chisq, t0, trace_filtered_td, trace_filtered
+        return amp, chisq, t0
 
-    def rolling_fit_with_shift(self, trace_long, allowed_shift_range=[0, 32767]):
+    def rolling_fit_with_shift(self, trace_long, allowed_shift_range=None):
         L = len(trace_long)
         N = self._length
         fs = self._sampling_frequency
