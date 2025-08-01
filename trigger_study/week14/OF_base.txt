@@ -1,4 +1,5 @@
-#Optimum filter V1.1, adapt to the case where the trace length is longer than the template
+#Optimum filter V1, as the base. Window OF for fitting long trace working well for the long trace at low energy
+#1. removed wrapping for the shift index, in the fit_with_shift
 import numpy as np
 from numpy.fft import rfft, irfft, fft, ifft, fftfreq, rfftfreq
 from scipy.signal import fftconvolve
@@ -42,6 +43,7 @@ class OptimumFilter():
 
         trace_fft = fft(trace, axis=-1)/self._sampling_frequency # V
         trace_filtered = self._kernel_fft * trace_fft / self._kernel_normalization # Phi * V
+        # this is the cross-correlation of the template with the trace, weighted by the inverse noise PSD in frequency space.
         chisq0 = np.real(
             np.dot(trace_fft.conjugate()/self._noise_psd_unfolded,
                    trace_fft)*self._sampling_frequency/self._length
@@ -84,7 +86,7 @@ class OptimumFilter():
         
         amp = trace_filtered_td[best_ind]
         chisq = chi[best_ind]/(self._length-3)
-        t0 = best_ind if best_ind<self._length//2 else best_ind-self._length
+        t0 = best_ind
         
         return amp, chisq, t0
 
