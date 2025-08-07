@@ -47,6 +47,9 @@ class OptimumFilter():
         amp = np.real(trace_filtered.sum(axis=-1)) * self._sampling_frequency / self._length
         chisq0 = np.real((trace_fft.conj() * trace_fft / self._noise_psd_unfolded).sum()) * self._sampling_frequency / self._length
         chisq = (chisq0 - amp**2 * self._kernel_normalization) / (self._length - 2) 
+        trace_filtered_td = np.real(
+            ifft(trace_filtered, axis=-1)
+        ) * self._sampling_frequency
         return amp, chisq
     
     def fit_with_shift(self, trace, allowed_shift_range=None):
