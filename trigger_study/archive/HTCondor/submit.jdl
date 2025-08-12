@@ -1,0 +1,19 @@
+Universe = container                                                            
+container_image = /cvmfs/unpacked.cern.ch/registry.hub.docker.com/cverstege/alma9-gridjob:latest
+
+executable = ./executable.sh
+
+request_cpus = 100
+request_memory = 2000
+request_disk = 500000
++RequestWalltime = 1200
++remoteJob=True
+
+# Add transfer output file and a mapping 
+
+log = log_$(ProcID).log
+stdout = stdout_$(ProcID).log
+stderr = stderr_$(ProcID).log
+
+
+queue

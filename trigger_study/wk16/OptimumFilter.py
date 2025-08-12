@@ -45,10 +45,11 @@ class OptimumFilter():
         trace_fft = fft(trace, axis=-1)/self._sampling_frequency # V
         trace_filtered = self._filter_kernel * trace_fft
         amp = np.real(trace_filtered.sum(axis=-1)) * self._sampling_frequency / self._length
+        chisq0 = np.real((trace_fft.conj() * trace_fft / self._noise_psd_unfolded).sum()) * self._sampling_frequency / self._length
+        chisq = (chisq0 - amp**2 * self._kernel_normalization) / (self._length - 2) 
 
-        return amp
-        #chisq0 = np.real((trace_fft.conj() * trace_fft / self._noise_psd_unfolded).sum()) * self._sampling_frequency / self._length
-        #chisq = (chisq0 - amp**2 * self._kernel_normalization) / (self._length - 2) 
+        return amp, chisq
+        
     
     def fit_with_shift(self, trace, allowed_shift_range=None):
  
@@ -76,28 +77,76 @@ class OptimumFilter():
         
         return amp, chisq, t0
 
-    def rolling_fit_with_shift(self, trace_long, allowed_shift_range=None):
-        L = len(trace_long)
+    def sliding_fit(self, trace_long, hop=1, reanchor_every=None):
+        """
+        Optimum-filter amplitude and chi^2 for every N-sample window over a long trace,
+        stepping by `hop` samples, *without* zero padding or large convolutions.
+        Uses a sliding-DFT recurrence. This matches the scaling of `fit()`.
+
+        Args:
+            trace_long (array_like): Long 1D trace.
+            hop (int): Step between consecutive windows (default 1).
+            reanchor_every (int or None): If set, recompute the FFT from scratch for the
+                current window every `reanchor_every` windows to avoid round-off drift.
+
+        Returns:
+            amps   (np.ndarray): shape (num_windows,) optimum-filter amplitudes.
+            chisqs (np.ndarray): shape (num_windows,) chi-square values with dof (N-2).
+            starts (np.ndarray): shape (num_windows,) starting indices of each window.
+        """
+        x = np.asarray(trace_long)
+        L = x.size
         N = self._length
         fs = self._sampling_frequency
+        if L < N:
+            raise ValueError("trace_long must be at least as long as the template length.")
 
-        n_windows = L // N
-        amps = np.zeros(n_windows)
-        chisqs = np.zeros(n_windows)
-        shifts = np.zeros(n_windows, dtype=int)
-        positions = np.zeros(n_windows, dtype=int)
+        # Number of windows and their start indices
+        num_windows = 1 + (L - N) // hop
+        starts = np.arange(num_windows) * hop
+        amps = np.empty(num_windows, dtype=float)
+        chisqs = np.empty(num_windows, dtype=float)
 
-        for i in range(n_windows):
-            start = i * N
-            segment = trace_long[start:start + N]
-            amp, chisq, t0 = self.fit_with_shift(segment, allowed_shift_range)
+        # Twiddle/rotation vector for NumPy FFT convention: multiply by exp(+j 2π m/N)
+        m = np.arange(N)
+        E = np.exp(2j * np.pi * m / N)
 
-            amps[i] = amp
-            chisqs[i] = chisq
-            shifts[i] = t0
-            positions[i] = start + t0
+        F = self._filter_kernel
+        S_unf = self._noise_psd_unfolded
 
-        return amps, chisqs, shifts, positions
+        # Initial N-point FFT (keep your 1/fs scaling)
+        X = np.fft.fft(x[0:N]) / fs
+
+        # First window outputs
+        amp0 = np.real(np.dot(F, X)) * fs / N
+        chi0_0 = np.real((X.conj() * X / S_unf).sum()) * fs / N
+        chisq0 = (chi0_0 - amp0**2 * self._kernel_normalization) / (N - 2)
+        amps[0] = amp0
+        chisqs[0] = chisq0
+
+        made = 1  # windows produced so far
+        for start in range(hop, L - N + 1, hop):
+            if reanchor_every and (made % reanchor_every == 0):
+                # Recompute from scratch to limit numerical drift
+                X = np.fft.fft(x[start:start + N]) / fs
+            else:
+                # Advance by `hop` micro-steps using the sliding-DFT recurrence
+                # X_{t+1} = (X_t - x[t]/fs + x[t+N]/fs) * exp(+j 2π m/N)
+                t0 = start - hop
+                for u in range(hop):
+                    t = t0 + u
+                    X = (X - x[t] / fs + x[t + N] / fs) * E
+
+            amp = np.real(np.dot(F, X)) * fs / N
+            chi0 = np.real((X.conj() * X / S_unf).sum()) * fs / N
+            chisq = (chi0 - amp**2 * self._kernel_normalization) / (N - 2)
+
+            amps[made] = amp
+            chisqs[made] = chisq
+            made += 1
+
+        return amps, chisqs, starts
+
     
     
     def convolve_long_trace(self, trace_long):

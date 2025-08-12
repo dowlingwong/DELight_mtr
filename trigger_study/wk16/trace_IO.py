@@ -62,6 +62,58 @@ def load_traces_from_zstd(input_path, n_traces, dtype=np.float16, trace_shape=(9
 
     return np.stack(traces).astype(np.float32)
 
+def save_ampl_to_zstd(traces, output_path, dtype=np.float16, trace_shape=(9, 217233), compression_level=15):
+    """
+    Save a list of numpy arrays (traces) into a compressed Zstandard (.zst) file.
+    """
+    def shuffle_bytes(arr: np.ndarray) -> bytes:
+        return arr.view(np.uint8).reshape(-1, arr.itemsize).T.tobytes()
+
+    all_data = bytearray()
+    for trace in traces:
+        if trace.shape != trace_shape:
+            raise ValueError(f"Trace has wrong shape {trace.shape}, expected {trace_shape}")
+        shuffled = shuffle_bytes(trace.astype(dtype))
+        all_data.extend(shuffled)
+
+    compressor = zstd.ZstdCompressor(level=compression_level)
+    compressed_data = compressor.compress(bytes(all_data))
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(output_path, 'wb') as f:
+        f.write(compressed_data)
+
+def load_ampl_from_zstd(input_path, n_traces, dtype=np.float16, trace_shape=(9, 217233)) -> np.ndarray:
+    """
+    Load a list of numpy arrays (traces) from a compressed Zstandard (.zst) file and return a single stacked ndarray.
+    """
+    def unshuffle_bytes(data: bytes, dtype=np.float16, shape=(9, 217233)) -> np.ndarray:
+        itemsize = np.dtype(dtype).itemsize
+        num_elements = np.prod(shape)
+        reshaped = np.frombuffer(data, dtype=np.uint8).reshape(itemsize, num_elements).T
+        unshuffled = reshaped.reshape(-1)
+        return unshuffled.view(dtype).reshape(shape)
+
+    decompressor = zstd.ZstdDecompressor()
+    with open(input_path, 'rb') as f:
+        compressed_content = f.read()
+        decompressed = decompressor.decompress(compressed_content)
+
+    trace_size_bytes = np.prod(trace_shape) * np.dtype(dtype).itemsize
+    expected_size = n_traces * trace_size_bytes
+    if len(decompressed) != expected_size:
+        raise ValueError("Decompressed size does not match expected size")
+
+    traces = []
+    for i in range(n_traces):
+        start = i * trace_size_bytes
+        end = start + trace_size_bytes
+        trace_bytes = decompressed[start:end]
+        trace = unshuffle_bytes(trace_bytes, dtype=dtype, shape=trace_shape)
+        traces.append(trace)
+
+    return np.stack(traces).astype(np.float32)
+
 def plot_traces(traces, fs=3_906_250, offset_step=70, title="QP Traces"):
     if traces.ndim == 3 and traces.shape[0] == 1:
         traces = traces[0]
