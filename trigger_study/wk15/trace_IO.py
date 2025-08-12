@@ -10,7 +10,7 @@ def read_yaml_to_dict(file_path):
         config_dict = yaml.safe_load(file)
     return config_dict
 
-def save_traces_to_zstd(traces, output_path, dtype=np.float16, trace_shape=(9, 300000), compression_level=15):
+def save_traces_to_zstd(traces, output_path, dtype=np.float16, trace_shape=(9, 250000), compression_level=15):
     """
     Save a list of numpy arrays (traces) into a compressed Zstandard (.zst) file.
     """
@@ -31,11 +31,11 @@ def save_traces_to_zstd(traces, output_path, dtype=np.float16, trace_shape=(9, 3
     with open(output_path, 'wb') as f:
         f.write(compressed_data)
 
-def load_traces_from_zstd(input_path, n_traces, dtype=np.float16, trace_shape=(9, 300000)) -> np.ndarray:
+def load_traces_from_zstd(input_path, n_traces, dtype=np.float16, trace_shape=(9, 250000)) -> np.ndarray:
     """
     Load a list of numpy arrays (traces) from a compressed Zstandard (.zst) file and return a single stacked ndarray.
     """
-    def unshuffle_bytes(data: bytes, dtype=np.float16, shape=(9, 300000)) -> np.ndarray:
+    def unshuffle_bytes(data: bytes, dtype=np.float16, shape=(9, 250000)) -> np.ndarray:
         itemsize = np.dtype(dtype).itemsize
         num_elements = np.prod(shape)
         reshaped = np.frombuffer(data, dtype=np.uint8).reshape(itemsize, num_elements).T
