@@ -1,0 +1,18 @@
+
+Universe = container                                                            
+container_image = /cvmfs/unpacked.cern.ch/registry.hub.docker.com/cverstege/alma9-gridjob:latest
+executable = /home/dwong/DELight_mtr/trigger_study/wk24/submit/run.sh
+
+request_cpus = 50
+request_memory = 30G
+request_disk = 50G
+
+
+log = log_$(ProcID).log
+stdout = stdout_$(ProcID).log
+stderr = stderr_$(ProcID).log
+
+
+
+accounting_group=cms
+queue

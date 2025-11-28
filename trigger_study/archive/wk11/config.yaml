@@ -7,6 +7,6 @@ trArrivalTime: '/ceph/bmaier/delight/share/TraceSimulator/triplet/trSim_trTempla
 positionMMC: '/ceph/bmaier/delight/share/TraceSimulator/position_MMC.dat'
 # from X-ray MMC analysis
 sampling_frequency: 3906250
-trace_samples: 32768
+trace_samples: 300000
 noise_type: '/ceph/dwong/delight/templates/noise_psd_xray.npy'
 noise_power: 33.2

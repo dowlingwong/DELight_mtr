@@ -3,7 +3,7 @@ import numpy as np
 import zstandard as zstd
 import os
 from TraceSimulator import TraceSimulator
-from trace_IO import save_traces_to_zstd  # Make sure this function is available
+from wk23.training_samples.trace_IO import save_traces_to_zstd  # Make sure this function is available
 
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
