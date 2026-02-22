@@ -1,0 +1,26 @@
+{
+  "data_dir": "/ceph/dwong/trigger_samples/PCA_QP/main",
+  "file_glob": "NR_traces_energy_*_pair_qp_sum_batch_*.h5",
+  "n_files": 2,
+  "pretrigger": 4000,
+  "posttrigger_start": 4000,
+  "normalize_posttrigger_only": true,
+  "eps": 1e-12,
+  "n_traces_used": 200,
+  "n_skipped_zero_peak": 0,
+  "smooth_method": "savgol",
+  "moving_avg_window": 101,
+  "savgol_window": 101,
+  "savgol_polyorder": 3,
+  "traces_by_energy": {
+    "500": 200
+  },
+  "saved": {
+    "raw": "/home/dwong/DELight_mtr/PCA_dev/wk4/make_template/outputs/smoke/QP_template_raw.npy",
+    "smooth": "/home/dwong/DELight_mtr/PCA_dev/wk4/make_template/outputs/smoke/QP_template_smooth.npy",
+    "std": "/home/dwong/DELight_mtr/PCA_dev/wk4/make_template/outputs/smoke/QP_template_std.npy",
+    "per_energy": {
+      "500": "/home/dwong/DELight_mtr/PCA_dev/wk4/make_template/outputs/smoke/QP_template_energy_500.npy"
+    }
+  }
+}

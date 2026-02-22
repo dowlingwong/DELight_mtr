@@ -1,0 +1,34 @@
+{
+  "data": {
+    "n_total": 4358,
+    "n_train": 2179,
+    "n_test": 2179,
+    "trace_len": 32768,
+    "rfft_bins": 16385
+  },
+  "model": {
+    "k": 1,
+    "empca_n_iter_requested": 80,
+    "empca_n_iter_used": 42,
+    "ae_epochs": 40
+  },
+  "primary_complex_equivalence": {
+    "principal_angle_cosines": [
+      0.9999999967274091
+    ],
+    "principal_angles_deg": [
+      0.004635360197085605
+    ],
+    "residual_ks_statistic": 0.0009178522257916476,
+    "residual_ks_pvalue": 0.9999999999999991,
+    "mean_test_reconstruction_gap": 2054441.3392232046,
+    "empca_test_resid_mean": 2122094764581442.0,
+    "exact_ae_test_resid_mean": 2122094754136064.0,
+    "relative_mean_residual_diff": -4.922201484277365e-09
+  },
+  "diagnostic_real_feature_comparison": {
+    "residual_ks_statistic": 0.04359798072510326,
+    "residual_ks_pvalue": 0.0317765431557792,
+    "real_feature_test_resid_mean": 2125809181415379.0
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "synthetic": {
+    "identity_max_abs_diff_of_vs_template_gls": null,
+    "rho_weighted_cosine": null,
+    "regression": {
+      "slope_alpha": null,
+      "intercept_beta": null,
+      "correlation_r": null,
+      "origin_fit_alpha0": null,
+      "median_relative_error_origin_fit": null
+    },
+    "residual_energy_ks": {
+      "statistic": null,
+      "pvalue": null
+    },
+    "amplitude_stats": {
+      "of": {
+        "n": 0,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null
+      },
+      "empca": {
+        "n": 0,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null
+      }
+    },
+    "residual_energy_stats": {
+      "of": {
+        "n": 0,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null
+      },
+      "empca": {
+        "n": 0,
+        "mean": null,
+        "std": null,
+        "min": null,
+        "max": null
+      }
+    }
+  },
+  "real": {
+    "identity_max_abs_diff_of_vs_template_gls": 0.0005533900239242939,
+    "rho_weighted_cosine": 0.9999999655317877,
+    "regression": {
+      "slope_alpha": 16005.405770282534,
+      "intercept_beta": 2362.616239398718,
+      "correlation_r": 0.9942010762668452,
+      "origin_fit_alpha0": 16005.632836486551,
+      "median_relative_error_origin_fit": 9.678169446358625e-05
+    },
+    "residual_energy_ks": {
+      "statistic": 0.030289123451124368,
+      "pvalue": 0.2702892843051498
+    },
+    "amplitude_stats": {
+      "of": {
+        "n": 2179,
+        "mean": 10404.951903755198,
+        "std": 12.311378091248397,
+        "min": 10364.278740672542,
+        "max": 10553.0387151818
+      },
+      "empca": {
+        "n": 2179,
+        "mean": 166537839.85611507,
+        "std": 198197.93666056034,
+        "min": 165903711.94193628,
+        "max": 168908023.9469128
+      }
+    },
+    "residual_energy_stats": {
+      "of": {
+        "n": 2179,
+        "mean": 2124463181172550.8,
+        "std": 74042833386694.94,
+        "min": 2053764366743848.5,
+        "max": 5130336930262138.0
+      },
+      "empca": {
+        "n": 2179,
+        "mean": 2122094760509266.0,
+        "std": 71690002816738.92,
+        "min": 2054684337090642.5,
+        "max": 5092646291733433.0
+      }
+    }
+  }
+}

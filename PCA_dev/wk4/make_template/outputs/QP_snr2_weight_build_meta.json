@@ -1,0 +1,55 @@
+{
+  "template_path": "/home/dwong/DELight_mtr/PCA_dev/wk4/make_template/outputs/QP_template_smooth.npy",
+  "sampling_frequency_hz": 3906250.0,
+  "eps": 1e-18,
+  "baseline_samples": 2000,
+  "baseline_mean": -3.0256707047454643e-10,
+  "baseline_std": 3.84473965603581e-05,
+  "snr2_formula": "template_psd/(noise_psd+eps)",
+  "saved": {
+    "mmc": "/home/dwong/DELight_mtr/PCA_dev/reusable/weight/qp_snr2_weight_MMC.npy",
+    "white": "/home/dwong/DELight_mtr/PCA_dev/reusable/weight/qp_snr2_weight_white.npy",
+    "pink": "/home/dwong/DELight_mtr/PCA_dev/reusable/weight/qo_snr2_weight_pink.npy"
+  },
+  "summary": {
+    "mmc": {
+      "psd_path": "/ceph/dwong/delight/noise_psd_xray.npy",
+      "snr2_path": "/home/dwong/DELight_mtr/PCA_dev/reusable/weight/qp_snr2_weight_MMC.npy",
+      "n_bins": 16385,
+      "psd_min": 1.7181164606657316e-06,
+      "psd_median": 1.2478179867516899e-05,
+      "psd_max": 0.0013740587228669994,
+      "min": 2.9066181358981177e-09,
+      "median": 2.1323934971287918e-08,
+      "max": 1.323836383872101,
+      "q99": 6.205299287498079e-06,
+      "psd_freq_max_abs_diff_vs_rfftfreq": 0.055238149128854275
+    },
+    "white": {
+      "psd_path": "/home/dwong/DELight_mtr/PCA_dev/reusable/weight/noise_psd_white.npy",
+      "snr2_path": "/home/dwong/DELight_mtr/PCA_dev/reusable/weight/qp_snr2_weight_white.npy",
+      "n_bins": 16385,
+      "psd_min": 1.6998400000000003e-05,
+      "psd_median": 1.6998400000000003e-05,
+      "psd_max": 1.6998400000000003e-05,
+      "min": 2.7147633944745366e-09,
+      "median": 1.085905447444037e-08,
+      "max": 107.01177351445195,
+      "q99": 2.1494024064629732e-05,
+      "psd_freq_max_abs_diff_vs_rfftfreq": null
+    },
+    "pink": {
+      "psd_path": "/home/dwong/DELight_mtr/PCA_dev/reusable/weight/noise_psd_pink.npy",
+      "snr2_path": "/home/dwong/DELight_mtr/PCA_dev/reusable/weight/qo_snr2_weight_pink.npy",
+      "n_bins": 16385,
+      "psd_min": 1.751679098789068e-06,
+      "psd_median": 3.503358197578136e-06,
+      "psd_max": 0.02869951035456009,
+      "min": 2.634422829872972e-08,
+      "median": 5.268846094752448e-08,
+      "max": 0.06338188033299112,
+      "q99": 2.106754988934285e-06,
+      "psd_freq_max_abs_diff_vs_rfftfreq": null
+    }
+  }
+}

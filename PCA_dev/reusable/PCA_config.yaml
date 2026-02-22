@@ -1,0 +1,11 @@
+LCE: '/ceph/dwong/delight_conf/new/optSim_LCE.npz'
+optArrivalTime: '/ceph/dwong/delight_conf/new/optSim_arrivalTime.npz'
+PCE: '/ceph/dwong/delight_conf/new/phonSim_PCE.npz'
+phonArrivalTime: '/ceph/dwong/delight_conf/new/phonSim_phonTemplate.npz'
+TCE: '/ceph/bmaier/delight/new/trSim_TCE.npz'
+trArrivalTime: '/ceph/dwong/delight_conf/new/trSim_trTemplate.npz'
+positionLAMCAL: '/ceph/dwong/delight_conf/new/position_MMC_V2.dat'
+sampling_frequency: 3906250
+trace_samples: 32768
+noise_type: '/ceph/dwong/delight_conf/new/noise_psd_xray.npy'
+noise_power: 33.2
