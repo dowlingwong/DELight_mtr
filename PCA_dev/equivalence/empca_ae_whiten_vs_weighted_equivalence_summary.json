@@ -1,0 +1,102 @@
+{
+  "data": {
+    "n_total": 4358,
+    "n_train": 2179,
+    "n_test": 2179,
+    "trace_len": 32768,
+    "rfft_bins": 16385
+  },
+  "model": {
+    "k": 1,
+    "empca_n_iter_requested": 80,
+    "empca_patience": 40,
+    "ae_epochs": 40
+  },
+  "section_A_whitened": {
+    "principal_angle_cosines": [
+      0.9999999831830575
+    ],
+    "principal_angles_deg": [
+      0.0105077843334015
+    ],
+    "residual_ks_statistic": 0.0013767783386874712,
+    "residual_ks_pvalue": 1.0,
+    "mean_test_reconstruction_gap": 1758352540.3185647,
+    "empca_test_resid_mean": 2122094760455204.2,
+    "exact_ae_test_resid_mean": 2122096498966528.0,
+    "relative_mean_residual_diff": 8.192430216344708e-07
+  },
+  "section_B_native_weighted": {
+    "empca_vs_exact": {
+      "principal_angle_cosines": [
+        0.9999999999999989
+      ],
+      "principal_angles_deg": [
+        2.6998693283819165e-06
+      ],
+      "residual_ks_statistic": 0.0004589261128958238,
+      "residual_ks_pvalue": 1.0,
+      "empca_test_resid_mean": 2122094761052042.0,
+      "exact_test_resid_mean": 2122094761052041.5,
+      "relative_mean_residual_diff": -2.356162454084387e-16
+    },
+    "iterative_ae_vs_exact": {
+      "principal_angle_cosines": [
+        0.9999999999999994
+      ],
+      "principal_angles_deg": [
+        1.9090959104164224e-06
+      ],
+      "residual_ks_statistic": 0.0004589261128958238,
+      "residual_ks_pvalue": 1.0,
+      "iterative_test_resid_mean": 2122094761052041.5,
+      "exact_test_resid_mean": 2122094761052041.5,
+      "relative_mean_residual_diff": 0.0
+    }
+  },
+  "proof_scorecard": {
+    "thresholds": {
+      "whitened_subspace_cosine_gap": 1e-06,
+      "whitened_max_principal_angle_deg": 0.01,
+      "whitened_rel_mean_residual_diff": 1e-06,
+      "whitened_residual_ks_D": 0.01,
+      "native_subspace_cosine_gap": 1e-06,
+      "native_max_principal_angle_deg": 0.01,
+      "native_rel_mean_residual_diff": 1e-06,
+      "native_residual_ks_D": 0.01,
+      "native_log_residual_slope_error": 0.01,
+      "native_log_residual_intercept_abs": 0.05,
+      "native_log_residual_one_minus_corr": 0.0001,
+      "whitened_native_relative_consistency_gap": 1e-06
+    },
+    "metrics": {
+      "whitened_subspace_cosine_gap": 1.6816942505215593e-08,
+      "whitened_max_principal_angle_deg": 0.0105077843334015,
+      "whitened_rel_mean_residual_diff": 8.192430216344708e-07,
+      "whitened_residual_ks_D": 0.0013767783386874712,
+      "native_subspace_cosine_gap": 1.1102230246251565e-15,
+      "native_max_principal_angle_deg": 2.6998693283819165e-06,
+      "native_rel_mean_residual_diff": 2.356162454084387e-16,
+      "native_residual_ks_D": 0.0004589261128958238,
+      "native_log_residual_slope_error": 8.881784197001252e-16,
+      "native_log_residual_intercept_abs": 1.7048242383704126e-14,
+      "native_log_residual_one_minus_corr": 0.0,
+      "whitened_native_relative_consistency_gap": 8.303163217353723e-07
+    },
+    "pass": {
+      "whitened_subspace_cosine_gap": true,
+      "whitened_max_principal_angle_deg": false,
+      "whitened_rel_mean_residual_diff": true,
+      "whitened_residual_ks_D": true,
+      "native_subspace_cosine_gap": true,
+      "native_max_principal_angle_deg": true,
+      "native_rel_mean_residual_diff": true,
+      "native_residual_ks_D": true,
+      "native_log_residual_slope_error": true,
+      "native_log_residual_intercept_abs": true,
+      "native_log_residual_one_minus_corr": true,
+      "whitened_native_relative_consistency_gap": true
+    },
+    "overall_pass": false
+  }
+}
