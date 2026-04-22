@@ -1,0 +1,23 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.01338105764930203,
+    "val_loss": 3.8885651998785566e-05,
+    "val_roc_auc": 1.0,
+    "val_pr_auc": 1.0
+  },
+  {
+    "epoch": 2,
+    "train_loss": 2.273768937551982e-05,
+    "val_loss": 1.2651721542505057e-05,
+    "val_roc_auc": 1.0,
+    "val_pr_auc": 1.0
+  },
+  {
+    "epoch": 3,
+    "train_loss": 5.982602834982182e-06,
+    "val_loss": 3.5019486523723525e-06,
+    "val_roc_auc": 1.0,
+    "val_pr_auc": 1.0
+  }
+]

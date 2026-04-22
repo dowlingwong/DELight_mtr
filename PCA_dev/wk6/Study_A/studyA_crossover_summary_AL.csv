@@ -1,0 +1,6 @@
+component_pair,num_crossings,all_crossings_hz,first_inband_crossing_hz,comment
+SQUID vs Johnson,0,none,,none in analyzed AL band
+SQUID vs TD,0,none,,none in analyzed AL band
+Johnson vs TD,1,688.581,688.5812226756312,single crossing in analyzed AL band
+SQUID vs Er,0,none,,none in analyzed AL band
+Johnson vs Er,1,319.673,319.6726753518719,single crossing in analyzed AL band

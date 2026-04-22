@@ -1,0 +1,6 @@
+{
+  "dataset_prep_seconds": 0.1997336852364242,
+  "training_seconds": 14.249888878781348,
+  "validation_seconds": 1.2804597234353423,
+  "total_wall_seconds": 15.764621952082962
+}

@@ -1,0 +1,7 @@
+frequency_band,dominant_source,secondary_source,dominant_median_fraction,interpretation_note
+1-100 Hz,SQUID,Er,0.8830872488930926,SQUID-dominated readout-limited regime
+100-1e+03 Hz,SQUID,TD,0.8670509745960628,SQUID-dominated readout-limited regime
+1e+03-1e+04 Hz,SQUID,Johnson,0.963003853152338,SQUID-dominated readout-limited regime
+1e+04-1e+05 Hz,SQUID,Johnson,0.967003219143189,SQUID-dominated readout-limited regime
+1e+05-1e+06 Hz,SQUID,Johnson,0.967368469248546,SQUID-dominated readout-limited regime
+1e+06-3e+07 Hz,SQUID,Johnson,0.9674178362760837,SQUID-dominated readout-limited regime

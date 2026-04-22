@@ -1,0 +1,26 @@
+[
+  {
+    "run_idx": 0,
+    "run_seed": 123,
+    "val_last_roc_auc": 0.887186111111111,
+    "val_last_pr_auc": 0.9094417975490312,
+    "test_roc_auc": 0.8715472222222223,
+    "test_pr_auc": 0.8949046833501184
+  },
+  {
+    "run_idx": 1,
+    "run_seed": 124,
+    "val_last_roc_auc": 0.8790444444444445,
+    "val_last_pr_auc": 0.9010011768670627,
+    "test_roc_auc": 0.8783472222222223,
+    "test_pr_auc": 0.9005549014039805
+  },
+  {
+    "run_idx": 2,
+    "run_seed": 125,
+    "val_last_roc_auc": 0.8778166666666667,
+    "val_last_pr_auc": 0.8981052250210908,
+    "test_roc_auc": 0.8792944444444446,
+    "test_pr_auc": 0.9028943921014345
+  }
+]

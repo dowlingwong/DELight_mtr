@@ -1,0 +1,15 @@
+metric,value
+"cos_t(PC1,mean)",0.9999992569588673
+"cos_t(PC1,template)",0.9997017505411726
+"cos_t(PC1,T/PSD-like)",0.8629808141457325
+"cos_W(PC1,mean)",1.0
+"cos_W(PC1,T/PSD-like)",1.0000000000000002
+"cos_t(PC2,derivative)",-0.001972860597199503
+"cos_W(PC2,derivative)",5.471427116783e-16
+"cos_t(PC3,width)",0.00014002509721337925
+"cos_W(PC3,width)",6.487423835361733e-17
+"pearson(a2,timing)",-0.01495847773807069
+"pearson(a3,width)",-0.4488136113359324
+mean_rel_weighted_resid_k1,2.0
+mean_rel_weighted_resid_k2,2.0
+mean_rel_weighted_resid_k3,2.0

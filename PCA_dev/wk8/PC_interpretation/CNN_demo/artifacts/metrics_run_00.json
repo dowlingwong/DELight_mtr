@@ -1,0 +1,22 @@
+{
+  "run_idx": 0,
+  "run_seed": 123,
+  "test_loss": 0.443891715062292,
+  "test_roc_auc": 0.8715472222222223,
+  "test_pr_auc": 0.8949046833501184,
+  "test_confusion_matrix_threshold_0_5": [
+    [
+      464,
+      136
+    ],
+    [
+      123,
+      477
+    ]
+  ],
+  "parameter_count": 961857,
+  "device": "cuda",
+  "train_size": 5600,
+  "val_size": 1200,
+  "test_size": 1200
+}

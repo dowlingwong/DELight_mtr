@@ -7,8 +7,8 @@ import torch
 # Add path to import modules
 sys.path.append(os.getcwd())
 
-from reusable.empca_TCY_optimized import EMPCA as EMPCA_CPU
-from reusable.empca_TCY_gpu import EMPCA_GPU
+from reusable.EMPCA.empca_TCY_optimized import EMPCA as EMPCA_CPU
+from reusable.EMPCA.empca_TCY_gpu import EMPCA_GPU
 
 def verify():
     print("Verifying GPU EMPCA equivalence...")

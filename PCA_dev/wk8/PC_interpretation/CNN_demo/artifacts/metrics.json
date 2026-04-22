@@ -1,0 +1,21 @@
+{
+  "test_loss": 3.5075377486224934e-06,
+  "test_roc_auc": 1.0,
+  "test_pr_auc": 1.0,
+  "test_confusion_matrix_threshold_0_5": [
+    [
+      600,
+      0
+    ],
+    [
+      0,
+      600
+    ]
+  ],
+  "parameter_count": 961857,
+  "device": "cpu",
+  "train_size": 5600,
+  "val_size": 1200,
+  "test_size": 1200,
+  "mean_inference_latency_per_batch_seconds": 0.03547315100992197
+}
